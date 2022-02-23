@@ -4,6 +4,7 @@ package br.com.letscode.todolist.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 import java.util.Date;
 import java.util.UUID;
@@ -19,6 +20,7 @@ public class Task {
         @Id @GeneratedValue
         private Integer id;
         private UUID userId;
+        @NotBlank(message = "Title is mandatory")
         private String title;
         private String description;
         private State state;
