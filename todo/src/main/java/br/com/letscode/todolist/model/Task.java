@@ -3,10 +3,7 @@ package br.com.letscode.todolist.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
 import java.util.UUID;
@@ -29,4 +26,14 @@ public class Task {
         private Date updateA;
         @OneToMany(mappedBy = "task")
         private Collection<Comment> comments;
+
+        @PrePersist
+        void createdAt() {
+                this.createdAt = new Date();
+        }
+
+        @PreUpdate
+        void updatedAt() {
+                this.updateA = new Date();
+        }
 }

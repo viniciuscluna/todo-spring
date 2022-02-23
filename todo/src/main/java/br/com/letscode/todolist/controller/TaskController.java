@@ -4,10 +4,7 @@ import br.com.letscode.todolist.model.Task;
 import br.com.letscode.todolist.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +23,11 @@ public class TaskController {
     @GetMapping("/{id}")
     public ResponseEntity<Task> getById(@PathVariable  Integer id){
         return ResponseEntity.ok(taskService.getById(id));
+    }
+
+    @PostMapping
+    public ResponseEntity<Task> post(@RequestBody Task task){
+        return ResponseEntity.ok(taskService.insert(task));
     }
 
 

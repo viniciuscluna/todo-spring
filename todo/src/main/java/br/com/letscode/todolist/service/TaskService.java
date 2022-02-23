@@ -19,6 +19,10 @@ public class TaskService {
         return Streamable.of(taskRepository.findAll()).toList();
     }
 
+    public Task insert(Task task){
+        return taskRepository.save(task);
+    }
+
     public Task getById(Integer id){
         var optionalTask = taskRepository.findById(id);
         if(optionalTask.isPresent()){
